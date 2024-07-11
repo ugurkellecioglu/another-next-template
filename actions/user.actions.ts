@@ -5,9 +5,9 @@ import { db } from "@/lib/db"
 import { users } from "@/lib/schema"
 import { LoginSchema } from "@/schemas/login-schema"
 import { RegisterSchema } from "@/schemas/register-schema"
-import argon2 from "argon2"
 import { eq } from "drizzle-orm"
 
+import bcryptjs from "bcryptjs"
 export async function getUserFromDb(email: string, password: string) {
   try {
     const existedUser = await db.query.users.findFirst({
@@ -22,7 +22,7 @@ export async function getUserFromDb(email: string, password: string) {
     }
 
     try {
-      await argon2.verify(existedUser.password, password)
+      await bcryptjs.compare(password, existedUser.password)
     } catch (error) {
       return {
         success: false,
@@ -102,7 +102,7 @@ export async function register({
         message: "User already exists.",
       }
     }
-    const hash = await argon2.hash(password)
+    const hash = await bcryptjs.hash(password, 10)
 
     const [user] = await db
       .insert(users)
