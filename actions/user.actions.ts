@@ -1,6 +1,6 @@
 "use server"
 
-import { signIn } from "@/auth"
+import { signIn, signOut } from "@/auth"
 import { db } from "@/lib/db"
 import { users } from "@/lib/schema"
 import { LoginSchema } from "@/schemas/login-schema"
@@ -21,8 +21,9 @@ export async function getUserFromDb(email: string, password: string) {
       }
     }
 
-    if (existedUser.password !== password) {
-      // hash compare
+    try {
+      await argon2.verify(existedUser.password, password)
+    } catch (error) {
       return {
         success: false,
         message: "Password incorrect.",
@@ -119,6 +120,23 @@ export async function register({
       data: user,
     }
   } catch (error: any) {
+    return {
+      success: false,
+      message: error.message,
+    }
+  }
+}
+
+export async function logout() {
+  try {
+    await signOut({
+      redirect: false,
+    })
+    return {
+      success: true,
+    }
+  } catch (error: any) {
+    console.log("error is ", error)
     return {
       success: false,
       message: error.message,
