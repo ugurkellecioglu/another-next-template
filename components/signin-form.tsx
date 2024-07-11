@@ -91,7 +91,7 @@ export default function SignIn() {
               />
               <div>
                 <Link href="signup" className="underline" prefetch={false}>
-                  Don't have an account? Sign up
+                  Don{"'"}t have an account? Sign up
                 </Link>
               </div>
               <Button type="submit">Login</Button>
