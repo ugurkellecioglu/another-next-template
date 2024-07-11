@@ -6,7 +6,7 @@ This repository provides a boilerplate for building a modern web application usi
 
 ## Live Demo 🌐
 
-Check out the live demo: [Live URL](#) (Replace this with the actual URL once deployed)
+Check out the live demo: [Live URL](https://another-next-template.vercel.app) 
 
 ## Screenshots 📸
 
