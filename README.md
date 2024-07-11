@@ -1,4 +1,4 @@
-# Next.js 14 Authentication and ORM Starter 🚀
+# Next.js 14 Authjs DrizzleORM PostgreSQL ShadCN Starter Template 🚀
 
 ## Project Overview 📘
 
@@ -10,7 +10,9 @@ Check out the live demo: [Live URL](#) (Replace this with the actual URL once de
 
 ## Screenshots 📸
 
-Add screenshots here to showcase your application. To add a screenshot, upload the image to the repository and reference it in this section.
+<img width="1509" alt="image" src="https://github.com/ugurkellecioglu/another-next-template/assets/51965140/7026709f-2278-4181-976e-82e36b9e0202">
+
+<img width="1510" alt="image" src="https://github.com/ugurkellecioglu/another-next-template/assets/51965140/f703014d-e304-468a-93ee-d72483704f61">
 
 ## Technologies Used 🛠️
 
@@ -50,7 +52,7 @@ npm install
 
 3. Set up environment variables:
 
-Create a `.env.local` file in the root of the project and add the following environment variables:
+Create a `.env` file in the root of the project and add the following environment variables:
 
 ```env
 AUTH_SECRET=your_own_secret
@@ -84,22 +86,6 @@ npm run dev
 ```
 
 6. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-## Project Structure 🗂️
-
-Here is an overview of the project's structure:
-
-```plaintext
-.
-├── components    # Reusable UI components
-├── lib           # Library functions and utilities
-├── pages         # Next.js pages
-├── public        # Public assets
-├── styles        # Global styles
-├── prisma        # Prisma schema
-├── api           # API routes
-└── utils         # Utility functions
-```
 
 ## Contributing 🤝
 
