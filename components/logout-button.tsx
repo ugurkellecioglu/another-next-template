@@ -10,7 +10,6 @@ export default function LogoutButton() {
 
   const onLogoutClick = async () => {
     const response = await logout()
-    console.log("response is ", response)
     if (response.success) {
       return router.push("/signin")
     } else {

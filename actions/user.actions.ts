@@ -2,7 +2,7 @@
 
 import { signIn, signOut } from "@/auth"
 import { db } from "@/lib/db"
-import { users } from "@/lib/schema"
+import { user } from "@/lib/schema"
 import { LoginSchema } from "@/schemas/login-schema"
 import { RegisterSchema } from "@/schemas/register-schema"
 import { eq } from "drizzle-orm"
@@ -10,8 +10,8 @@ import { eq } from "drizzle-orm"
 import bcryptjs from "bcryptjs"
 export async function getUserFromDb(email: string, password: string) {
   try {
-    const existedUser = await db.query.users.findFirst({
-      where: eq(users.email, email),
+    const existedUser = await db.query.user.findFirst({
+      where: eq(user.email, email),
     })
 
     if (!existedUser) {
@@ -21,12 +21,22 @@ export async function getUserFromDb(email: string, password: string) {
       }
     }
 
-    try {
-      await bcryptjs.compare(password, existedUser.password)
-    } catch (error) {
+    if (!existedUser.password) {
       return {
         success: false,
-        message: "Password incorrect.",
+        message: "Password is required.",
+      }
+    }
+
+    const isPasswordMatches = await bcryptjs.compare(
+      password,
+      existedUser.password
+    )
+
+    if (!isPasswordMatches) {
+      return {
+        success: false,
+        message: "Password is incorrect.",
       }
     }
 
@@ -55,7 +65,6 @@ export async function login({
       password,
     })
 
-    console.log("email is ", email)
     const formData = new FormData()
 
     formData.append("email", email)
@@ -77,6 +86,13 @@ export async function login({
       message: "Email or password is incorrect.",
     }
   }
+}
+
+export async function loginWithGithub() {
+  await signIn("github", {
+    redirect: true,
+    redirectTo: process.env.NEXT_PUBLIC_BASE_URL,
+  })
 }
 
 export async function register({
@@ -104,20 +120,20 @@ export async function register({
     }
     const hash = await bcryptjs.hash(password, 10)
 
-    const [user] = await db
-      .insert(users)
+    const [insertedUser] = await db
+      .insert(user)
       .values({
         email,
         password: hash,
       })
       .returning({
-        id: users.id,
-        email: users.email,
+        id: user.id,
+        email: user.email,
       })
 
     return {
       success: true,
-      data: user,
+      data: insertedUser,
     }
   } catch (error: any) {
     return {
@@ -136,7 +152,6 @@ export async function logout() {
       success: true,
     }
   } catch (error: any) {
-    console.log("error is ", error)
     return {
       success: false,
       message: error.message,

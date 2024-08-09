@@ -18,13 +18,8 @@ import {
 import { LoginSchema } from "@/schemas/login-schema"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "./ui/card"
+import GithubLoginButton from "./github-login-button"
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
 import { toast } from "./ui/use-toast"
 
 export default function SignIn() {
@@ -56,11 +51,18 @@ export default function SignIn() {
       <Card>
         <CardHeader>
           <CardTitle className="text-2xl">Login</CardTitle>
-          <CardDescription>
-            Enter your email and password to access your account.{" "}
-          </CardDescription>
         </CardHeader>
         <CardContent>
+          <GithubLoginButton />
+          <div className="flex gap-2 items-center justify-center my-2">
+            <div className="w-full h-[0.5px] bg-primary " />
+            <span className="text-sm text-gray-500">OR</span>
+            <div className="w-full h-[0.5px] bg-primary " />
+          </div>
+          <p className="text-sm text-center text-gray-500 my-2">
+            Sign in with your email and password
+          </p>
+
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
               <FormField
