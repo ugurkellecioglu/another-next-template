@@ -10,14 +10,20 @@ Check out the live demo: [Live URL](https://another-next-template.vercel.app)
 
 ## Screenshots 📸
 
-<img width="1509" alt="image" src="https://github.com/ugurkellecioglu/another-next-template/assets/51965140/7026709f-2278-4181-976e-82e36b9e0202">
-
-<img width="1510" alt="image" src="https://github.com/ugurkellecioglu/another-next-template/assets/51965140/f703014d-e304-468a-93ee-d72483704f61">
+![image](https://github.com/user-attachments/assets/fa827f23-083e-40c7-9ebc-fee80d4288bc)
 
 ## Technologies Used 🛠️
 
 - ⚛️ **Next.js 14**: React framework for server-rendered or statically-exported React apps.
-- 🔐 **Auth.js (NextAuth)**: Authentication library for Next.js applications.
+- 🔐 **Auth.js (NextAuth)**: Authentication library for Next.js applications. (Database strategy)
+  - [x] **Credentials**
+  - [x] **GitHub**
+  - [ ] **Discord**
+  - [ ] **Google**
+  - [ ] **Facebook**
+  - [ ] **Instagram**
+  - [ ] **Twitter**
+  - [ ] **Outlook**
 - 🗃️ **Drizzle ORM**: Type-safe SQL ORM for TypeScript.
 - 🐘 **PostgreSQL**: Relational database management system.
 - 📏 **Zod**: TypeScript-first schema declaration and validation library.
