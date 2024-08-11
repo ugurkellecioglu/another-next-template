@@ -3,6 +3,7 @@ import type { NextAuthConfig } from "next-auth"
 import NextAuth, { User } from "next-auth"
 import { encode as defaultEncode } from "next-auth/jwt"
 import Credentials from "next-auth/providers/credentials"
+import Discord from "next-auth/providers/discord"
 import Facebook from "next-auth/providers/facebook"
 import Github from "next-auth/providers/github"
 import { v4 as uuid } from "uuid"
@@ -21,6 +22,10 @@ const authConfig: NextAuthConfig = {
     Facebook({
       clientId: process.env.FACEBOOK_ID!,
       clientSecret: process.env.FACEBOOK_SECRET!,
+    }),
+    Discord({
+      clientId: process.env.DISCORD_CLIENT_ID!,
+      clientSecret: process.env.DISCORD_CLIENT_SECRET!,
     }),
     Credentials({
       credentials: {

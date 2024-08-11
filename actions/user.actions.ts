@@ -88,6 +88,13 @@ export async function login({
   }
 }
 
+export async function loginWithDiscord() {
+  await signIn("discord", {
+    redirect: true,
+    redirectTo: process.env.NEXT_PUBLIC_BASE_URL,
+  })
+}
+
 export async function loginWithGithub() {
   await signIn("github", {
     redirect: true,

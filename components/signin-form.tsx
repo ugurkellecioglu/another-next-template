@@ -18,6 +18,7 @@ import {
 import { LoginSchema } from "@/schemas/login-schema"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
+import DiscordLoginButton from "./discord-login-button"
 import FacebookLoginButton from "./facebook-login-button"
 import GithubLoginButton from "./github-login-button"
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
@@ -57,6 +58,7 @@ export default function SignIn() {
           <div className="space-y-2">
             <GithubLoginButton />
             <FacebookLoginButton />
+            <DiscordLoginButton />
           </div>
           <div className="flex gap-2 items-center justify-center my-2">
             <div className="w-full h-[0.5px] bg-primary " />
