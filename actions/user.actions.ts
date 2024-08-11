@@ -94,6 +94,12 @@ export async function loginWithGithub() {
     redirectTo: process.env.NEXT_PUBLIC_BASE_URL,
   })
 }
+export async function loginWithFacebook() {
+  await signIn("facebook", {
+    redirect: true,
+    redirectTo: process.env.NEXT_PUBLIC_BASE_URL,
+  })
+}
 
 export async function register({
   email,
