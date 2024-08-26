@@ -28,6 +28,8 @@ export default function EditUserModal() {
       await updateUser({
         id: selectedUser.id,
         name,
+      }).then(() => {
+        setIsUpdateUserModalOpen(false)
       })
     }
   }
