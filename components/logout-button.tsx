@@ -11,7 +11,7 @@ export default function LogoutButton() {
   const onLogoutClick = async () => {
     const response = await logout()
     if (response.success) {
-      return router.push("/signin")
+      window.location.href = "/signin"
     } else {
       toast(response.message)
     }

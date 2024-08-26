@@ -17,13 +17,20 @@ const fontBody = Manrope({
   variable: "--font-body",
 })
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout({
+  children,
+  modal,
+}: {
+  children: React.ReactNode
+  modal: React.ReactNode
+}) {
   return (
     <html lang="en">
       <body
         className={cn("antialiased", fontHeading.variable, fontBody.variable)}
       >
         {children}
+        {modal}
         <Toaster />
       </body>
     </html>
