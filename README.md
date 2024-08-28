@@ -6,7 +6,7 @@ This repository provides a boilerplate for building a modern web application usi
 
 ## Live Demo 🌐
 
-Check out the live demo: [Live URL](https://another-next-template.vercel.app) 
+Check out the live demo: [Live URL](https://another-next-template.vercel.app)
 
 ## Screenshots 📸
 
@@ -15,12 +15,13 @@ Check out the live demo: [Live URL](https://another-next-template.vercel.app)
 ## Technologies Used 🛠️
 
 - ⚛️ **Next.js 14**: React framework for server-rendered or statically-exported React apps.
+  - [x] ** Auth modals using intercepting routes **
 - 🔐 **Auth.js (NextAuth)**: Authentication library for Next.js applications. (Database strategy)
   - [x] **Credentials**
   - [x] **GitHub**
-  - [ ] **Discord**
+  - [x] **Discord**
   - [ ] **Google**
-  - [ ] **Facebook**
+  - [x] **Facebook**
   - [ ] **Instagram**
   - [ ] **Twitter**
   - [ ] **Outlook**
@@ -30,6 +31,7 @@ Check out the live demo: [Live URL](https://another-next-template.vercel.app)
 - 📝 **React Hook Form**: Performant, flexible, and extensible forms with easy-to-use validation.
 - 🖌️ **Shadcn**: UI component library.
 - 🎨 **Tailwind CSS**: Utility-first CSS framework for rapidly building custom user interfaces.
+- 📦 **Tanstack/React Query**: Performant and powerful data synchronization library.
 
 ## Getting Started 🚀
 
