@@ -6,10 +6,10 @@ import Credentials from "next-auth/providers/credentials"
 import Discord from "next-auth/providers/discord"
 import Facebook from "next-auth/providers/facebook"
 import Github from "next-auth/providers/github"
+import Passkey from "next-auth/providers/passkey"
 import { v4 as uuid } from "uuid"
 import { getUserFromDb } from "./actions/user.actions"
 import { db } from "./lib/db"
-
 const adapter = DrizzleAdapter(db)
 
 const authConfig: NextAuthConfig = {
@@ -43,6 +43,7 @@ const authConfig: NextAuthConfig = {
         return null
       },
     }),
+    Passkey,
   ],
   callbacks: {
     async jwt({ token, user, account }) {
@@ -77,6 +78,7 @@ const authConfig: NextAuthConfig = {
     },
   },
   secret: process.env.AUTH_SECRET!,
+  experimental: { enableWebAuthn: true },
 }
 
 export const { handlers, signIn, signOut, auth } = NextAuth(authConfig)

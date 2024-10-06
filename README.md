@@ -20,8 +20,9 @@ Check out the live demo: [Live URL](https://another-next-template.vercel.app)
   - [x] **Credentials**
   - [x] **GitHub**
   - [x] **Discord**
-  - [ ] **Google**
   - [x] **Facebook**
+  - [x] **Passkey**
+  - [ ] **Google**
   - [ ] **Instagram**
   - [ ] **Twitter**
   - [ ] **Outlook**

@@ -1,5 +1,7 @@
 "use server"
 
+import { signIn as signInWithPasskey } from "next-auth/webauthn"
+
 import { signIn, signOut } from "@/auth"
 import { db } from "@/lib/db"
 import { user } from "@/lib/schema"
@@ -104,6 +106,12 @@ export async function loginWithGithub() {
 }
 export async function loginWithFacebook() {
   await signIn("facebook", {
+    redirect: true,
+    redirectTo: process.env.NEXT_PUBLIC_BASE_URL,
+  })
+}
+export async function loginWithPasskey() {
+  await signInWithPasskey("passkey", {
     redirect: true,
     redirectTo: process.env.NEXT_PUBLIC_BASE_URL,
   })

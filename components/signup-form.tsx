@@ -21,6 +21,7 @@ import { useRouter } from "next/navigation"
 import DiscordLoginButton from "./discord-login-button"
 import FacebookLoginButton from "./facebook-login-button"
 import GithubLoginButton from "./github-login-button"
+import PasskeyLoginButton from "./passkey-login-button"
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
 
 export default function SignUpForm({
@@ -65,6 +66,7 @@ export default function SignUpForm({
           <GithubLoginButton label="Sign up with Github" />
           <FacebookLoginButton label="Sign up with Facebook" />
           <DiscordLoginButton label="Sign up with Discord" />
+          <PasskeyLoginButton label="Sign up with Passkey" />
         </div>
         <div className="flex gap-2 items-center justify-center my-2">
           <div className="w-full h-[0.5px] bg-primary " />
