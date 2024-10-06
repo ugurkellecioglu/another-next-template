@@ -33,7 +33,8 @@ export default function PasskeyLoginButton({ label }: { label?: string }) {
               description: `Error: ${res.error}`,
             })
           } else {
-            router.push("/")
+            console.debug("else", res)
+            window.location.href = "/"
           }
         })
         .catch((error) => {
