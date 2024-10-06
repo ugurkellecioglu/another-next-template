@@ -4,7 +4,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 
-export default function () {
+export default function SignupModal() {
   const router = useRouter()
   const [isOpen, setIsOpened] = useState(true)
   return (
