@@ -10,7 +10,21 @@ import Passkey from "next-auth/providers/passkey"
 import { v4 as uuid } from "uuid"
 import { getUserFromDb } from "./actions/user.actions"
 import { db } from "./lib/db"
-const adapter = DrizzleAdapter(db)
+import {
+  accountsTable,
+  authenticatorsTable,
+  sessionsTable,
+  usersTable,
+  verificationTokensTable,
+} from "./lib/schema"
+
+const adapter = DrizzleAdapter(db, {
+  accountsTable,
+  usersTable,
+  authenticatorsTable,
+  sessionsTable,
+  verificationTokensTable,
+})
 
 const authConfig: NextAuthConfig = {
   adapter,

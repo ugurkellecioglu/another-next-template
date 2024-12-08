@@ -8,7 +8,7 @@ import {
 } from "drizzle-orm/pg-core"
 import type { AdapterAccountType } from "next-auth/adapters"
 
-export const user = pgTable("user", {
+export const usersTable = pgTable("users", {
   id: text("id")
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),
@@ -20,12 +20,12 @@ export const user = pgTable("user", {
   image: text("image"),
 })
 
-export const account = pgTable(
-  "account",
+export const accountsTable = pgTable(
+  "accounts",
   {
     userId: text("userId")
       .notNull()
-      .references(() => user.id, { onDelete: "cascade" }),
+      .references(() => usersTable.id, { onDelete: "cascade" }),
     type: text("type").$type<AdapterAccountType>().notNull(),
     provider: text("provider").notNull(),
     providerAccountId: text("providerAccountId").notNull(),
@@ -44,16 +44,16 @@ export const account = pgTable(
   })
 )
 
-export const session = pgTable("session", {
+export const sessionsTable = pgTable("sessions", {
   sessionToken: text("sessionToken").primaryKey(),
   userId: text("userId")
     .notNull()
-    .references(() => user.id, { onDelete: "cascade" }),
+    .references(() => usersTable.id, { onDelete: "cascade" }),
   expires: timestamp("expires", { mode: "date" }).notNull(),
 })
 
-export const verificationTokens = pgTable(
-  "verificationToken",
+export const verificationTokensTable = pgTable(
+  "verificationTokens",
   {
     identifier: text("identifier").notNull(),
     token: text("token").notNull(),
@@ -66,13 +66,13 @@ export const verificationTokens = pgTable(
   })
 )
 
-export const authenticators = pgTable(
-  "authenticator",
+export const authenticatorsTable = pgTable(
+  "authenticators",
   {
     credentialID: text("credentialID").notNull().unique(),
     userId: text("userId")
       .notNull()
-      .references(() => user.id, { onDelete: "cascade" }),
+      .references(() => usersTable.id, { onDelete: "cascade" }),
     providerAccountId: text("providerAccountId").notNull(),
     credentialPublicKey: text("credentialPublicKey").notNull(),
     counter: integer("counter").notNull(),

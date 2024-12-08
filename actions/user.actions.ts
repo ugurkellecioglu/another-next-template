@@ -4,7 +4,7 @@ import { signIn as signInWithPasskey } from "next-auth/webauthn"
 
 import { signIn, signOut } from "@/auth"
 import { db } from "@/lib/db"
-import { user } from "@/lib/schema"
+import { usersTable } from "@/lib/schema"
 import { LoginSchema } from "@/schemas/login-schema"
 import { RegisterSchema } from "@/schemas/register-schema"
 import { eq } from "drizzle-orm"
@@ -13,8 +13,8 @@ import bcryptjs from "bcryptjs"
 import { revalidatePath } from "next/cache"
 export async function getUserFromDb(email: string, password: string) {
   try {
-    const existedUser = await db.query.user.findFirst({
-      where: eq(user.email, email),
+    const existedUser = await db.query.usersTable.findFirst({
+      where: eq(usersTable.email, email),
     })
 
     if (!existedUser) {
@@ -143,14 +143,14 @@ export async function register({
     const hash = await bcryptjs.hash(password, 10)
 
     const [insertedUser] = await db
-      .insert(user)
+      .insert(usersTable)
       .values({
         email,
         password: hash,
       })
       .returning({
-        id: user.id,
-        email: user.email,
+        id: usersTable.id,
+        email: usersTable.email,
       })
 
     return {
