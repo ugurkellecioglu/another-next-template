@@ -82,7 +82,7 @@ export const authenticatorsTable = pgTable(
   },
   (authenticator) => ({
     compositePK: primaryKey({
-      columns: [authenticator.userId, authenticator.credentialID],
+      columns: [authenticator.credentialID, authenticator.userId],
     }),
   })
 )
