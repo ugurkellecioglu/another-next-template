@@ -24,7 +24,7 @@ const adapter = DrizzleAdapter(db, {
   authenticatorsTable,
   sessionsTable,
   verificationTokensTable,
-})
+} as any) // TODO: Fix this type error - DrizzleAdapter doesn't export a type that we can use here
 
 const authConfig: NextAuthConfig = {
   adapter,
